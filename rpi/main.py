@@ -9,7 +9,7 @@ from threading import Thread
 class ServerThread(Thread):
 
     def __init__(self, server):
-        threading.Thread.__init__(self)
+        Thread.__init__(self)
         self.server = server
 
     def run(self):
