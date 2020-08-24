@@ -50,7 +50,6 @@ server_thread = None
 
 # Run main loop
 start()
-diode_handler.set_green()
 
 while not should_close:
     time.sleep(1)
