@@ -4,7 +4,7 @@ from diode_handler import DiodeHandler
 
 GREEN_PIN = 17
 RED_PIN = 27
-diode_handler = DiodeHandler(GREEN_PIN, RED_PIN)
+diode_handler = DiodeHandler(GREEN_PIN, RED_PIN, 10)
 
 should_close = False
 
