@@ -12,7 +12,7 @@ function update {
         status=1
     fi
 
-    curl -d "{\"status\":${status}}" "http://${HOST_PORT}/update"
+    curl -s -d "{\"status\":${status}}" "http://${HOST_PORT}/update" > /dev/null
 }
 
 while true
