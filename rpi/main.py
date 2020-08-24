@@ -1,9 +1,10 @@
-import RPi.GPIO as GPIO
 import time
 import signal
+from diode_handler import DiodeHandler
 
 GREEN_PIN = 17
 RED_PIN = 27
+diode_handler = DiodeHandler(GREEN_PIN, RED_PIN)
 
 should_close = False
 
@@ -16,22 +17,19 @@ def setup():
     signal.signal(signal.SIGINT, handle_signals)
     signal.signal(signal.SIGTERM, handle_signals)
 
-    # Light both LEDS
-    GPIO.setmode(GPIO.BCM)
-    GPIO.setwarnings(False)
-    GPIO.setup(GREEN_PIN, GPIO.OUT, initial=GPIO.HIGH)
-    GPIO.setup(RED_PIN, GPIO.OUT, initial=GPIO.HIGH)
+    diode_handler.start()
 
 def teardown():
-    # Switch LEDs off
-    GPIO.output(GREEN_PIN, GPIO.LOW)
-    GPIO.output(RED_PIN, GPIO.LOW)
+    diode_handler.stop()
 
 
 # Run main loop
 setup()
 
 while not should_close:
+    diode_handler.set_red()
+    time.sleep(1)
+    diode_handler.set_green()
     time.sleep(1)
 
 teardown()
