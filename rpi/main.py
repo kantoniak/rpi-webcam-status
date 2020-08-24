@@ -12,6 +12,10 @@ def handle_signals(signum, frame):
     should_close = True
 
 def setup():
+    # Add signal handlers
+    signal.signal(signal.SIGINT, handle_signals)
+    signal.signal(signal.SIGTERM, handle_signals)
+
     # Light both LEDS
     GPIO.setmode(GPIO.BCM)
     GPIO.setwarnings(False)
