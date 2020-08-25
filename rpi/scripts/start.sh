@@ -2,7 +2,10 @@
 
 OVPN_FILE="/home/pi/vpn/Trust.Zone-Poland.ovpn"
 
+# Kill existing processes
 sudo killall openvpn
+sudo killall noip2
+
 echo "Connecting..."
 sudo openvpn --config "${OVPN_FILE}" --daemon
 
