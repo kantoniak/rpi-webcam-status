@@ -2,6 +2,7 @@
 
 OVPN_FILE="/home/pi/vpn/Trust.Zone-Poland.ovpn"
 
+sudo killall openvpn
 echo "Connecting..."
 sudo openvpn --config "${OVPN_FILE}" --daemon
 
@@ -14,4 +15,4 @@ echo "Connected. Public IP: ${ip}"
 echo "Connecting No IP..."
 sudo /usr/local/bin/noip2
 
-#pipenv run python main.py
+pipenv run python main.py
