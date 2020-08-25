@@ -1,11 +1,6 @@
 #!/bin/sh
-
-CRED_FILE="/etc/openvpn/credentials"
-
 apt-get install -y openvpn
 
-read -p "Username:" username
-read -s -p "Password:" password
-
-touch "${CRED_FILE}"
-printf '%s\n' "${username}" "${password}" > "${CRED_FILE}"
+sudo mkdir -p /etc/openvpn/scripts
+sudo wget https://raw.githubusercontent.com/jonathanio/update-systemd-resolved/master/update-systemd-resolved -P /etc/openvpn/scripts/
+sudo chmod +x /etc/openvpn/scripts/update-systemd-resolved
